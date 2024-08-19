@@ -215,7 +215,7 @@ function getGetUniqueGuestList(guestList) {
 //          facebook: 'carol.smith77'
 //      }
 //    }
-//};
+// };
 
 // const user2 = {
 //     id: 2,
@@ -223,15 +223,35 @@ function getGetUniqueGuestList(guestList) {
 //     profile: {
 //       email: 'jane.smith@example.com'
 //     }
-//};
+// };
 
 //   showUserProfile(user1); // Expected output: 'carol.smith, carol.smith77'
 //   showUserProfile(user2); // Expected output: 'jane.smith@example.com'
 
+// function showUserProfile(user) {
+//   if (user.profile.social) {
+//     console.log(`${user.profile.social.twitter}, ${user.profile.social.facebook}`);
+//   } else { console.log(user.profile.email); }
+// }
+
 function showUserProfile(user) {
-  if (user.profile.social) {
-    console.log(`${user.profile.social.twitter}, ${user.profile.social.facebook}`);
-  } else { console.log(user.profile.email); }
+  if (user.profile) {
+    if (user.profile.social) {
+      let socials = []
+      Object.values(user.profile.social).forEach(values => {
+        socials.push(values)
+      })
+
+      console.log(socials.join(", "))
+    } else {
+      let profile = [] 
+      Object.values(user.profile).forEach(value => {
+        profile.push(value)
+      })
+
+      console.log(profile.join(", "))
+    }
+  }
 }
 
 // 11 - function sortLeaderBoardByScoreDesc(leaderBoard)
