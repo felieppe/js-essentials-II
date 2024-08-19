@@ -3,6 +3,7 @@
 // 01 - Function
 // getTotal(inventory: [{article: '🍔', price: 15, quantity: '1'}, {article: '🍟', price: 10, quantity: '2'}])
 // it should return the total. for the example data 👆 it should be: 35. (15x1 + 10x2)
+
 function getTotal(inventory) {
   let total = 0;
   inventory.forEach((item) => {
@@ -13,6 +14,7 @@ function getTotal(inventory) {
 
 // 02 - Function
 // countBanana(inventory:['🥑','🍌','🥭', '🍌']})
+
 function countBanana(inventory) {
   let count = 0;
   inventory.forEach((item) => {
@@ -26,6 +28,7 @@ function countBanana(inventory) {
 // 03- Function
 //   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 //   console.log(filterEvenNumbers(numbers)); // Output: [2, 4, 6, 8, 10]
+
 function filterEvenNumbers(numbers) {
   return numbers.filter((number) => number % 2 === 0);
 }
@@ -33,6 +36,7 @@ function filterEvenNumbers(numbers) {
 // 04 - function
 //   const numbers = [1, 2, 3, 4, 5];
 //   console.log(squareNumbers(numbers)); // Output: [1, 4, 9, 16, 25]
+
 function squareNumbers(numbers) {
   return numbers.map((number) => number * number);
 }
@@ -40,6 +44,7 @@ function squareNumbers(numbers) {
 // 05 - function
 //   const numbers = [1, 2, 3, 4, 5];
 //   console.log(findMax(numbers)); // Output: 5
+
 function findMax(numbers) {
   return Math.max(...numbers);
 }
@@ -52,6 +57,7 @@ function findMax(numbers) {
 //     { name: "El Chengue", age: 49 }
 //   ];
 //   console.log(calculateAverageAge(people)); // Output: 32.5
+
 function calculateAverageAge(people) {
   let totalAge = 0;
   people.forEach((person) => {
@@ -192,6 +198,7 @@ function printChemicalInfo(chemicals) {
 
 // Remove duplicated elements from the  guests list
 // Expected getGetUniqueGuestList(guestList)) ['Alice 🙆🏻‍♀️', 'Bob 🙍🏼', 'Charlie 👨🏼‍🚀', 'David 🤵🏿‍♂️']
+
 function getGetUniqueGuestList(guestList) {
   return [...new Set(guestList)];
 }
@@ -220,6 +227,7 @@ function getGetUniqueGuestList(guestList) {
 
 //   showUserProfile(user1); // Expected output: 'carol.smith, carol.smith77'
 //   showUserProfile(user2); // Expected output: 'jane.smith@example.com'
+
 function showUserProfile(user) {
   if (user.profile.social) {
     console.log(`${user.profile.social.twitter}, ${user.profile.social.facebook}`);
@@ -259,7 +267,6 @@ function sortLeaderBoardByScoreDesc(leaderBoard) {
 }
 
 // 12 - function
-
 // function getTopFiveWorstPlayers(leaderBoard)
 
 // Expected output:
@@ -274,7 +281,7 @@ function sortLeaderBoardByScoreDesc(leaderBoard) {
 // NOTE: ⚠️ original array shouldn't be modified. or we are missing players.
 
 function getTopFiveWorstPlayers(leaderBoard) {
-  return leaderBoard.slice(0, 5);
+  return leaderBoard.sort((a, b) => a.score - b.score).slice(0, 5);
 }
 
 // 13 - function safeCopy()
