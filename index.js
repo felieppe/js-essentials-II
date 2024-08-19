@@ -3,21 +3,46 @@
 // 01 - Function
 // getTotal(inventory: [{article: '🍔', price: 15, quantity: '1'}, {article: '🍟', price: 10, quantity: '2'}])
 // it should return the total. for the example data 👆 it should be: 35. (15x1 + 10x2)
+function getTotal(inventory) {
+  let total = 0;
+  inventory.forEach((item) => {
+    total += item.price * item.quantity;
+  });
+  return total;
+}
 
 // 02 - Function
 // countBanana(inventory:['🥑','🍌','🥭', '🍌']})
+function countBanana(inventory) {
+  let count = 0;
+  inventory.forEach((item) => {
+    if (item === "🍌") {
+      count++;
+    }
+  });
+  return count;
+}
 
 // 03- Function
 //   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 //   console.log(filterEvenNumbers(numbers)); // Output: [2, 4, 6, 8, 10]
+function filterEvenNumbers(numbers) {
+  return numbers.filter((number) => number % 2 === 0);
+}
 
 // 04 - function
 //   const numbers = [1, 2, 3, 4, 5];
 //   console.log(squareNumbers(numbers)); // Output: [1, 4, 9, 16, 25]
+function squareNumbers(numbers) {
+  return numbers.map((number) => number * number);
+}
 
 // 05 - function
 //   const numbers = [1, 2, 3, 4, 5];
 //   console.log(findMax(numbers)); // Output: 5
+function findMax(numbers) {
+  return Math.max(...numbers);
+}
 
 // 06 - function
 //   const people = [
@@ -27,6 +52,13 @@
 //     { name: "El Chengue", age: 49 }
 //   ];
 //   console.log(calculateAverageAge(people)); // Output: 32.5
+function calculateAverageAge(people) {
+  let totalAge = 0;
+  people.forEach((person) => {
+    totalAge += person.age;
+  });
+  return totalAge / people.length;
+}
 
 // 07 - function  combinedHobbies(persons)
 // Function to combine hobbies from all persons
@@ -58,6 +90,14 @@
 //   'photography 📸', 'traveling ✈️', 'swimming 🏊‍♂️',
 //   'dancing 💃', 'singing 🎤', 'running 🏃‍♀️'
 // ]
+
+function combinedHobbies(persons) {
+  let hobbies = [];
+  persons.forEach((person) => {
+    hobbies = hobbies.concat(person.hobbies);
+  });
+  return hobbies;
+}
 
 // 08 - function printChemicalInfo(chemicals)
 // const chemicals = [
@@ -130,11 +170,31 @@
 // | Solubility: Miscible with water                      |
 // +-------------------------------------------------------+
 
+function printChemicalInfo(chemicals) {
+  chemicals.forEach((chemical) => {
+    console.log(
+        `+-------------------------------------------------------+
+        | Compound ID: ${chemical.compoundId}                    |
+        | Name: ${chemical.name}                                 |
+        | Formula: ${chemical.formula}                           |
+        | Description: ${chemical.description}                   |
+        | Molecular Weight: ${chemical.molecularWeight}          |
+        | Melting Point: ${chemical.meltingPoint}                |
+        | Boiling Point: ${chemical.boilingPoint}                |
+        | Solubility: ${chemical.solubility}                     |
+        +-------------------------------------------------------+`
+    );
+  });
+}
+
 // 09 - function getGetUniqueGuestList(guestList)
 // const guestList = ['Alice 🙆🏻‍♀️', 'Bob 🙍🏼', 'Charlie 👨🏼‍🚀', 'Alice 🙆🏻‍♀️', 'David 🤵🏿‍♂️'];
 
 // Remove duplicated elements from the  guests list
 // Expected getGetUniqueGuestList(guestList)) ['Alice 🙆🏻‍♀️', 'Bob 🙍🏼', 'Charlie 👨🏼‍🚀', 'David 🤵🏿‍♂️']
+function getGetUniqueGuestList(guestList) {
+  return [...new Set(guestList)];
+}
 
 // 10 - function showUserProfiles(user)
 // User data
@@ -160,6 +220,11 @@
 
 //   showUserProfile(user1); // Expected output: 'carol.smith, carol.smith77'
 //   showUserProfile(user2); // Expected output: 'jane.smith@example.com'
+function showUserProfile(user) {
+  if (user.profile.social) {
+    console.log(`${user.profile.social.twitter}, ${user.profile.social.facebook}`);
+  } else { console.log(user.profile.email); }
+}
 
 // 11 - function sortLeaderBoardByScoreDesc(leaderBoard)
 // The function should sort the players by score as it's displayed on the expected output
@@ -189,6 +254,10 @@
 //   { player: 'Bobby', score: 11 }
 // ]
 
+function sortLeaderBoardByScoreDesc(leaderBoard) {
+  return leaderBoard.sort((a, b) => b.score - a.score);
+}
+
 // 12 - function
 
 // function getTopFiveWorstPlayers(leaderBoard)
@@ -203,6 +272,10 @@
 // ]
 
 // NOTE: ⚠️ original array shouldn't be modified. or we are missing players.
+
+function getTopFiveWorstPlayers(leaderBoard) {
+  return leaderBoard.slice(0, 5);
+}
 
 // 13 - function safeCopy()
 // const companyHierarchy = {
@@ -253,3 +326,7 @@
 
 //   console.log('Copied Company Hierarchy with Modifications:');
 //   console.log(copiedHierarchy);
+
+function safeCopy(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
